@@ -51,9 +51,10 @@ export function Navbar() {
             <SheetContent side="right" className="w-72">
               <div className="mt-8 flex flex-col gap-1">
                 {links.map((l) => (
-                  <SheetClose asChild key={l.to}>
+                  <SheetClose asChild key={l.label}>
                     <Link
                       to={l.to}
+                      hash={l.hash}
                       className="rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
                     >
                       {l.label}
