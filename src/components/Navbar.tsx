@@ -6,10 +6,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { Logo } from "@/components/Logo";
 
 const links = [
-  { to: "/", label: "Inicio" },
-  { to: "/memorial/demo", label: "Ver memorial" },
-  { to: "/para-funerarias", label: "Para funerarias" },
-  { to: "/contacto", label: "Contacto" },
+  { to: "/", label: "Inicio", hash: undefined },
+  { to: "/", label: "Cómo funciona", hash: "como-funciona" },
+  { to: "/para-funerarias", label: "Para funerarias", hash: undefined },
+  { to: "/memorial/demo", label: "Demo", hash: undefined },
 ] as const;
 
 export function Navbar() {
