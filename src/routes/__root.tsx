@@ -94,6 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@MemoriQR" },
+      { name: "twitter:title", content: "MemoríQR — Su historia, siempre viva." },
+      { name: "description", content: "MemoríQR Tributes is a web application for creating lasting digital memorials for loved ones." },
+      { property: "og:description", content: "MemoríQR Tributes is a web application for creating lasting digital memorials for loved ones." },
+      { name: "twitter:description", content: "MemoríQR Tributes is a web application for creating lasting digital memorials for loved ones." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
     ],
     links: [
       {
