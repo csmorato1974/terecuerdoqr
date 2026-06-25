@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { canonicalUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/para-funerarias")({
   head: () => ({
@@ -35,12 +36,14 @@ export const Route = createFileRoute("/para-funerarias")({
         content:
           "Memoriales digitales con placa QR para funerarias, cementerios y marmolistas. Un servicio diferencial para las familias.",
       },
+      { property: "og:url", content: canonicalUrl("/para-funerarias") },
       {
         property: "og:image",
         content:
           "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
       },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/para-funerarias") }],
   }),
   component: ParaFunerarias,
 });

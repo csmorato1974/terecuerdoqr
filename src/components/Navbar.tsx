@@ -6,10 +6,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { Logo } from "@/components/Logo";
 
 const links = [
-  { to: "/", label: "Inicio" },
-  { to: "/memorial/demo", label: "Ver memorial" },
-  { to: "/para-funerarias", label: "Para funerarias" },
-  { to: "/contacto", label: "Contacto" },
+  { to: "/", label: "Inicio", hash: undefined },
+  { to: "/", label: "Cómo funciona", hash: "como-funciona" },
+  { to: "/para-funerarias", label: "Para funerarias", hash: undefined },
+  { to: "/memorial/demo", label: "Demo", hash: undefined },
 ] as const;
 
 export function Navbar() {
@@ -23,8 +23,9 @@ export function Navbar() {
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <Link
-              key={l.to}
+              key={l.label}
               to={l.to}
+              hash={l.hash}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: l.to === "/" }}
@@ -50,9 +51,10 @@ export function Navbar() {
             <SheetContent side="right" className="w-72">
               <div className="mt-8 flex flex-col gap-1">
                 {links.map((l) => (
-                  <SheetClose asChild key={l.to}>
+                  <SheetClose asChild key={l.label}>
                     <Link
                       to={l.to}
+                      hash={l.hash}
                       className="rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary"
                     >
                       {l.label}

@@ -16,6 +16,7 @@ import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { canonicalUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
@@ -37,7 +38,9 @@ export const Route = createFileRoute("/memorial/demo")({
           "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=1200&q=80",
       },
       { property: "og:type", content: "profile" },
+      { property: "og:url", content: canonicalUrl("/memorial/demo") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/memorial/demo") }],
   }),
   component: MemorialDemo,
 });
@@ -104,6 +107,11 @@ function MemorialDemo() {
 
   return (
     <SiteLayout>
+      {/* Demo notice */}
+      <div className="bg-gold/10 px-5 py-2.5 text-center text-xs font-medium text-foreground">
+        Esta es una página de demostración. Así se verá un memorial real en MemoríQR.
+      </div>
+
       {/* Cover + portrait */}
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">

@@ -14,6 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { canonicalUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -29,7 +30,9 @@ export const Route = createFileRoute("/contacto")({
         property: "og:description",
         content: "Estamos aquí para acompañarte. Escríbenos sin compromiso.",
       },
+      { property: "og:url", content: canonicalUrl("/contacto") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/contacto") }],
   }),
   component: Contacto,
 });
