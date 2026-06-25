@@ -23,8 +23,9 @@ export function Navbar() {
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <Link
-              key={l.to}
+              key={l.label}
               to={l.to}
+              hash={l.hash}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: l.to === "/" }}
