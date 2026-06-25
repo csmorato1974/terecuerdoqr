@@ -8,33 +8,43 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
+import { canonicalUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/crear-memorial")({
   head: () => ({
     meta: [
-      { title: "Crear un memorial — MemoríQR" },
+      { title: "Iniciar solicitud de memorial — MemoríQR" },
       {
         name: "description",
         content:
-          "Comienza el homenaje. Un proceso guiado y acompañado para reunir la historia, las fotos y los recuerdos de quien amas.",
+          "Comienza el homenaje. Un proceso guiado y acompañado para reunir la historia, las fotos y los recuerdos de quien amas. Sin pagos ni compromisos.",
       },
-      { property: "og:title", content: "Crear un memorial — MemoríQR" },
+      { property: "og:title", content: "Iniciar solicitud de memorial — MemoríQR" },
       {
         property: "og:description",
         content: "Un proceso guiado y acompañado para honrar una vida.",
       },
+      { property: "og:url", content: canonicalUrl("/crear-memorial") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/crear-memorial") }],
   }),
   component: CrearMemorial,
 });
 
-const stepLabels = ["Sobre la persona", "Recuerdos", "Plan y contacto"];
+const stepLabels = ["Sobre la persona", "Fotos y recuerdos", "Tipo de servicio", "Enviar solicitud"];
+const TOTAL_STEPS = stepLabels.length;
 
 const planOptions = [
-  { id: "esencial", name: "Esencial", note: "Homenaje digno y completo", price: "Desde" },
-  { id: "familiar", name: "Familiar", note: "Con todos sus detalles", price: "Personalizado" },
-  { id: "consultar", name: "No estoy seguro", note: "Prefiero que me asesoren", price: "Consultar" },
+  { id: "esencial", name: "Memorial esencial", note: "Homenaje digno y completo", price: "Desde" },
+  { id: "familiar", name: "Memorial familiar", note: "Con todos sus detalles", price: "Personalizado" },
+  {
+    id: "funeraria",
+    name: "Servicio para funeraria / partner",
+    note: "Soy un negocio o profesional del sector",
+    price: "Consultar",
+  },
 ];
 
 function CrearMemorial() {
@@ -55,9 +65,12 @@ function CrearMemorial() {
 
   // Step 3
   const [plan, setPlan] = useState("familiar");
+
+  // Step 4
   const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
 
   function next() {
     if (step === 1) {
@@ -66,7 +79,7 @@ function CrearMemorial() {
         return;
       }
     }
-    setStep((s) => Math.min(3, s + 1));
+    setStep((s) => Math.min(TOTAL_STEPS, s + 1));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -95,6 +108,10 @@ function CrearMemorial() {
       toast.error("Necesitamos tu nombre y correo para acompañarte.");
       return;
     }
+    if (!consent) {
+      toast.error("Acepta el contacto para que podamos acompañarte.");
+      return;
+    }
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -111,10 +128,14 @@ function CrearMemorial() {
               Solicitud recibida
             </h1>
             <p className="mt-4 leading-relaxed text-muted-foreground">
-              Gracias por confiar en nosotros para honrar a{" "}
-              <span className="font-medium text-foreground">{fullName || "tu ser querido"}</span>.
-              Un miembro de nuestro equipo se pondrá en contacto contigo muy pronto
-              para acompañarte en cada paso de la creación del memorial.
+              Nuestro equipo revisará tu información y te contactará para acompañarte
+              en el siguiente paso de la creación del memorial
+              {fullName ? (
+                <>
+                  {" "}de <span className="font-medium text-foreground">{fullName}</span>
+                </>
+              ) : null}
+              .
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
               No se ha realizado ningún cobro ni se ha publicado nada todavía.
@@ -137,17 +158,18 @@ function CrearMemorial() {
               <Sparkles className="size-4" /> Comienza el homenaje
             </span>
             <h1 className="mt-3 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-              Crear un memorial
+              Iniciar solicitud de memorial
             </h1>
             <p className="mt-3 text-muted-foreground">
-              Un proceso guiado y acompañado. Tómate tu tiempo: estamos aquí para ayudarte.
+              Un proceso guiado y acompañado, sin pagos ni compromisos. Tómate tu
+              tiempo: estamos aquí para ayudarte.
             </p>
           </div>
         </Reveal>
 
         {/* Progress */}
         <div className="mt-10">
-          <div className="mb-3 flex justify-between text-xs font-medium">
+          <div className="mb-3 flex flex-wrap justify-between gap-x-3 gap-y-1 text-xs font-medium">
             {stepLabels.map((label, i) => (
               <span
                 key={label}
@@ -157,7 +179,7 @@ function CrearMemorial() {
               </span>
             ))}
           </div>
-          <Progress value={(step / 3) * 100} className="h-1.5" />
+          <Progress value={(step / TOTAL_STEPS) * 100} className="h-1.5" />
         </div>
 
         <div className="mt-10">
@@ -196,7 +218,7 @@ function CrearMemorial() {
                 </div>
               </div>
               <div>
-                <Label htmlFor="city">Ciudad o lugar</Label>
+                <Label htmlFor="city">Ciudad o lugar de origen</Label>
                 <Input
                   id="city"
                   value={city}
@@ -282,9 +304,9 @@ function CrearMemorial() {
           )}
 
           {step === 3 && (
-            <Reveal className="space-y-7">
+            <Reveal className="space-y-4">
               <div>
-                <Label className="mb-2 block">¿Qué plan se acerca a lo que buscas?</Label>
+                <Label className="mb-2 block">¿Qué tipo de servicio se acerca a lo que buscas?</Label>
                 <div className="space-y-3">
                   {planOptions.map((p) => (
                     <button
@@ -311,42 +333,59 @@ function CrearMemorial() {
                   No es un pago: definiremos juntos los detalles antes de cualquier cosa.
                 </p>
               </div>
+            </Reveal>
+          )}
 
-              <div className="space-y-5">
+          {step === 4 && (
+            <Reveal className="space-y-5">
+              <p className="text-sm text-muted-foreground">
+                Déjanos tus datos y nuestro equipo te contactará para acompañarte.
+              </p>
+              <div>
+                <Label htmlFor="contactName">Tu nombre</Label>
+                <Input
+                  id="contactName"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  placeholder="¿Cómo te llamas?"
+                  className="mt-1.5"
+                />
+              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <Label htmlFor="contactName">Tu nombre</Label>
+                  <Label htmlFor="email">Correo electrónico</Label>
                   <Input
-                    id="contactName"
-                    value={contactName}
-                    onChange={(e) => setContactName(e.target.value)}
-                    placeholder="¿Cómo te llamas?"
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="tucorreo@ejemplo.com"
                     className="mt-1.5"
                   />
                 </div>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <Label htmlFor="email">Correo electrónico</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tucorreo@ejemplo.com"
-                      className="mt-1.5"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Teléfono (opcional)</Label>
-                    <Input
-                      id="phone"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+57 300 000 0000"
-                      className="mt-1.5"
-                    />
-                  </div>
+                <div>
+                  <Label htmlFor="phone">Teléfono / WhatsApp (opcional)</Label>
+                  <Input
+                    id="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+57 300 000 0000"
+                    className="mt-1.5"
+                  />
                 </div>
               </div>
+              <label className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 text-sm">
+                <Checkbox
+                  checked={consent}
+                  onCheckedChange={(v) => setConsent(v === true)}
+                  className="mt-0.5"
+                  aria-label="Consentimiento de contacto"
+                />
+                <span className="text-muted-foreground">
+                  Acepto que el equipo de MemoríQR me contacte sobre mi solicitud. Mis
+                  datos se usarán únicamente para este fin.
+                </span>
+              </label>
             </Reveal>
           )}
         </div>
@@ -361,7 +400,7 @@ function CrearMemorial() {
             <span />
           )}
 
-          {step < 3 ? (
+          {step < TOTAL_STEPS ? (
             <Button onClick={next} className="bg-primary text-primary-foreground hover:bg-primary/90">
               Continuar <ArrowRight className="size-4" />
             </Button>
