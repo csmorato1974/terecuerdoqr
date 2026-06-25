@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CrearMemorialRouteImport } from './routes/crear-memorial'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MemorialDemoRouteImport } from './routes/memorial.demo'
 
+const CrearMemorialRoute = CrearMemorialRouteImport.update({
+  id: '/crear-memorial',
+  path: '/crear-memorial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +31,43 @@ const MemorialDemoRoute = MemorialDemoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crear-memorial': typeof CrearMemorialRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crear-memorial': typeof CrearMemorialRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crear-memorial': typeof CrearMemorialRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/memorial/demo'
+  fullPaths: '/' | '/crear-memorial' | '/memorial/demo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/memorial/demo'
-  id: '__root__' | '/' | '/memorial/demo'
+  to: '/' | '/crear-memorial' | '/memorial/demo'
+  id: '__root__' | '/' | '/crear-memorial' | '/memorial/demo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CrearMemorialRoute: typeof CrearMemorialRoute
   MemorialDemoRoute: typeof MemorialDemoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/crear-memorial': {
+      id: '/crear-memorial'
+      path: '/crear-memorial'
+      fullPath: '/crear-memorial'
+      preLoaderRoute: typeof CrearMemorialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CrearMemorialRoute: CrearMemorialRoute,
   MemorialDemoRoute: MemorialDemoRoute,
 }
 export const routeTree = rootRouteImport
