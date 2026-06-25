@@ -107,6 +107,11 @@ function MemorialDemo() {
 
   return (
     <SiteLayout>
+      {/* Demo notice */}
+      <div className="bg-gold/10 px-5 py-2.5 text-center text-xs font-medium text-foreground">
+        Esta es una página de demostración. Así se verá un memorial real en MemoríQR.
+      </div>
+
       {/* Cover + portrait */}
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
