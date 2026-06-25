@@ -38,7 +38,9 @@ export const Route = createFileRoute("/memorial/demo")({
           "https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=1200&q=80",
       },
       { property: "og:type", content: "profile" },
+      { property: "og:url", content: canonicalUrl("/memorial/demo") },
     ],
+    links: [{ rel: "canonical", href: canonicalUrl("/memorial/demo") }],
   }),
   component: MemorialDemo,
 });
