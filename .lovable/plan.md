@@ -1,73 +1,70 @@
-# MemoríQR — Validation MVP Build Plan
+# MemoríQR — Validation MVP: align with detailed brief (final)
 
-A premium, respectful, conversion-focused front-end for a digital memorial platform tied to physical QR plaques. **This is a validation MVP**: no auth, no database, no Stripe, no real persistence, and no *simulated* checkout/publishing. Forms are genuine lead/request capture UI that validate and show an honest "we'll contact you / request received" confirmation — they do not pretend to create accounts, charge cards, or publish a live memorial. All copy in Latin-American Spanish.
+The project already ships a working first version (home, demo memorial, 4 routes, navy/gold tokens, Playfair+Inter, Reveal motion). This plan brings it fully in line with the detailed spec and the 4 approved refinements: extract reusable components, complete the home page, add a 4-step guided create flow, sharpen B2B segmentation, and make the success state human and premium. No backend, no auth, no payments, no fake "published" states.
 
-## Design system & foundations
+## Design system (in place, confirm)
+- Navy `#1B2A4A`, gold `#C9A84C`, white, soft gray `#F5F5F5` as semantic tokens in `src/styles.css`. No hardcoded colors in components.
+- Playfair Display (`--font-display`) headings, Inter (`--font-sans`) body, via `@fontsource`.
+- `Reveal` (motion) for subtle fade/rise. No new animation libraries.
 
-- **Palette** (tokens in `src/styles.css`, oklch): navy `#1B2A4A` (primary), gold `#C9A84C` (accent), white `#FFFFFF`, soft gray `#F5F5F5` (muted surfaces). Mapped to semantic tokens; no hardcoded color utilities in components.
-- **Typography**: install `@fontsource/playfair-display` (headings, `--font-display`) + `@fontsource/inter` (body, `--font-sans`); register in `@theme`. Generous line-height, large dignified headings.
-- **Motion**: add `motion` (Framer Motion) — subtle only: gentle fade/rise-on-scroll, soft hero reveal. No bouncy or flashy effects.
-- **Imagery**: tasteful Unsplash placeholders (soft nature, light, flowers, hands) — calm and dignified, never gloomy or clinical.
-- Mobile-first and fully responsive (QR scans come from phones).
+## Reusable components (new — `src/components/`)
+- `CTASection` — configurable closing call-to-action band (heading, subcopy, up to 3 buttons).
+- `TrustCard`, `StepCard`, `PricingCard`, `Section` wrapper.
+- `MemoryWall` — name + message form with session-only list.
+- `MemorialGallery` — responsive image grid.
+- Shared `InquiryForm` field primitives (zod + react-hook-form) reused by create / partner / contact forms.
+- Keep existing `Navbar`, `Footer`, `Logo`, `SiteLayout`, `Reveal`.
 
-## Shared layout
+## Navbar / Footer
+- Navbar center links: **Inicio**, **Cómo funciona** (home anchor), **Para funerarias**, **Demo** (`/memorial/demo`). Right CTA **Crear memorial**, mobile hamburger sheet, sticky.
+- Footer: brand, link columns, contact, social icons, copyright (align labels).
 
-- `Navbar`: logo left; center links (Inicio, Cómo funciona, Para funerarias, Contacto); "Crear memorial" CTA right; hamburger sheet on mobile.
-- `Footer`: logo + tagline "Su historia, siempre viva.", link columns, social icons, "© MemoríQR 2026".
-- Reusable `Section` / animated `Reveal` wrapper for consistent spacing and scroll motion.
+## Home `/` — complete section set
+Keep hero, how-it-works, emotional band, trust, pricing, testimonials. Add/adjust:
+- **Hero**: primary "Crear memorial", secondary "Ver demo", tertiary "Para funerarias".
+- **Trust/value**: Privacidad, Permanencia, Acceso por QR, Acompañamiento humano (4 `TrustCard`s).
+- **(Refinement 1) "Lo que recibe la familia"** — dedicated card group with 4 items: página memorial digital, placa QR / formato listo para QR, soporte de fotos / video / historia, acompañamiento y guía humana.
+- **Para familias** section — emotional "why this matters".
+- **(Refinement 2) Modelo de negocio — segmentación B2B/B2C**: a clear 3-column comparison section: **Familias**, **Funerarias**, **Cementerios / Marmolistas**, each with its own value framing (what they get / why it matters), making the business model explicit. Links into `/para-funerarias` for the partner columns.
+- **Demo preview** card → `/memorial/demo`.
+- **Pricing/positioning** — Memorial esencial "Desde", Memorial familiar "Personalizado", Plan para funerarias "Consultar" (no SaaS prices).
+- **FAQ** (shadcn `Accordion`) — privacy, who can access, where the QR goes, photos/videos/messages, partners offering it. Also emit FAQPage JSON-LD.
+- **Final CTA** (`CTASection`) — three paths: Crear memorial, Solicitar información, Ofrecer en mi funeraria.
 
-## Routes (`src/routes/`)
+## Demo memorial `/memorial/demo`
+- Refactor memory wall → `MemoryWall`, gallery → `MemorialGallery`.
+- Keep clear "demostración / no se guarda" framing, share section, QR preview.
+- Verify og:title/description/image and self-referencing canonical/og:url.
 
-1. **`/` (index.tsx) — Home: trust, emotional clarity, CTAs**
-   - Hero: calm full-width image, "Su historia, siempre viva.", supporting subheadline, CTAs "Crear memorial" (→ `/crear-memorial`) and "Ver demo" (→ `/memorial/demo`).
-   - How it works: 3 steps (Crea el perfil / Recibe la placa QR / Comparte el recuerdo).
-   - **Trust sections** (core of this page): Privacidad (control de la familia, datos protegidos), Permanencia (el recuerdo perdura), Acceso por QR (escanear desde la placa), Acompañamiento/Soporte.
-   - Planes with **premium positioning** — no low SaaS prices. Three tiers e.g. *Esencial — "Desde"*, *Familiar — "Personalizado"*, *Instituciones — "Consultar"*, each with value-focused feature lists and a "Solicitar" / "Consultar" CTA (routes to create/contact, no checkout).
-   - Testimonials: 3 dignified placeholder family quotes.
-   - Closing CTA band + footer.
+## Create memorial `/crear-memorial` — 4 guided steps
+Heading "Iniciar solicitud de memorial" (request, not checkout):
+- **Paso 1 — Datos de la persona**: nombre completo, fechas, ciudad, biografía breve.
+- **Paso 2 — Fotos y recuerdos**: retrato + galería con vista previa local (object URLs, no se suben), enlace de video opcional.
+- **Paso 3 — Tipo de servicio**: Memorial esencial / Memorial familiar / Servicio para funeraria (selectable cards, premium positioning, no prices/checkout).
+- **Paso 4 — Enviar solicitud**: nombre, email, teléfono/WhatsApp opcional, checkbox de consentimiento.
+- Progress UI, zod + react-hook-form validation.
+- **(Refinement 3) Success state — human + premium**, not generic: *"Solicitud recibida. Nuestro equipo revisará tu información y te contactará para acompañarte en el siguiente paso."* No payment, no fake publish.
 
-2. **`/memorial/demo` (memorial.demo.tsx) — Dignified premium memorial**
-   - Full-width cover photo with overlaid circular portrait.
-   - Name, birth–death dates, hometown, short honorific line.
-   - Biography / "Su historia" (placeholder, editorial typography).
-   - Gallery: tasteful photo grid (calm, gallery-like — not a social feed).
-   - One embedded video placeholder.
-   - Memory Wall ("Mensajes de la familia y seres queridos"): name + message form; submitted messages appear in a list **in session state only** (clearly not persisted), respectful framing.
-   - "Comparte este memorial": share buttons + QR image placeholder.
-   - Per-route SEO `head()` (title, description, og:title, og:image).
+## Partners `/para-funerarias`
+- Hero "Ofrece un servicio diferencial a las familias".
+- Why partners choose: placa QR física, página memorial digital, add-on premium, white-label futuro, menor fricción operativa.
+- Business-model value + use cases (lápidas, tarjetas conmemorativas, urnas, rincones de recuerdo).
+- Lead form: nombre, empresa, rol, email, teléfono, volumen mensual de memoriales, notas — lead capture only.
+- CTAs: solicitar información de alianza / agendar conversación.
 
-3. **`/crear-memorial` (crear-memorial.tsx) — Guided memorial *request* flow (not payment)**
-   - Multi-step guided form with progress indicator:
-     - Step 1 — Sobre la persona: nombre, fechas, ciudad, breve biografía.
-     - Step 2 — Recuerdos: profile photo + gallery photos with **instant local previews** (object URLs; not uploaded/stored), optional video URL.
-     - Step 3 — Plan y contacto: choose a plan (premium positioning), enter contact details (nombre, email, teléfono). Final action is "Enviar solicitud" — honest confirmation that the MemoríQR team will reach out. **No payment step, no fake publish.**
-   - zod + react-hook-form validation; success state is a real-feeling but truthful "solicitud recibida" screen.
+## Contact `/contacto`
+- Warm intro, contact methods, inquiry form (nombre, email, asunto, mensaje), reassurance about response time. Honest confirmation, no persistence.
 
-4. **`/para-funerarias` (para-funerarias.tsx) — B2B for funerarias, cementerios, marmolistas**
-   - Hero: "Ofrece un servicio diferencial a las familias."
-   - Audience-specific value: funerarias, cementerios, marmolistas (placas grabadas con QR).
-   - Benefits: placas QR por volumen, panel para gestionar memoriales, opción marca blanca, integración/API disponible, acompañamiento comercial.
-   - Trust + partnership framing; CTA to partner contact form (name, empresa, tipo de negocio, teléfono, email, memoriales/mes estimados) — lead capture only.
+## SEO / meta — (Refinement 4) easy domain swap
+- Each route keeps its own `head()` (title, description, og:title, og:description); og:image only on leaf routes (home + demo). og:type "website" sitewide, leaf-appropriate per page.
+- **Centralize the base URL in one constant** (e.g. `SITE_URL` in `src/lib/seo.ts`) used to build every `canonical` and `og:url`. Defaults to `https://memori-qr.lovable.app` now; swapping to the final custom domain later is a single-line change. Canonical on leaf routes only; og:url self-references each page.
 
-5. **`/contacto` (contacto.tsx) — Contact**
-   - Warm intro, contact form (nombre, email, asunto, mensaje), alternative contact details/placeholders, optional FAQ teasers (privacidad, permanencia, soporte). Validates; honest confirmation, no persistence.
+## Honesty guardrails (per brief)
+- No fake checkout, no fake account, no "memorial publicado / en vivo" state. Forms confirm human follow-up; photo uploads are local previews only. Memory wall is session-only and labeled as demo.
 
-## Routing & SEO notes
+## Out of scope (future backend phase)
+Lovable Cloud auth, `memorials`/`messages` tables, real photo storage, auto-generated slugs + dynamic `/memorial/[slug]`, real-time memory wall, real Stripe. `/blog` deferred.
 
-- Dynamic `/memorial/[slug]` is deferred (needs backend); the demo route represents the public memorial experience now.
-- Every route defines its own `head()` (title, description, og:title, og:description); og:image only on leaf routes.
-
-## Honesty guardrails (per user direction)
-
-- No simulated checkout, no fake "memorial published / live" state, no fake account creation.
-- Forms capture intent and confirm a human follow-up; photo "uploads" are local previews only.
-
-## Explicitly out of scope (future backend phase)
-
-Lovable Cloud auth, `memorials`/`messages` tables, real photo storage, auto-generated slugs + dynamic memorial pages, real-time Memory Wall, real Stripe payments.
-
-## Technical details
-
-- New deps: `motion`, `@fontsource/playfair-display`, `@fontsource/inter`.
-- Reuse existing shadcn/ui components (button, card, input, textarea, sheet, progress, sonner, accordion for FAQ).
-- QR placeholder via a public QR image URL or generated placeholder asset pointing at the demo URL.
+## Technical notes
+- Deps already present: `motion`, `@fontsource/playfair-display`, `@fontsource/inter`, lucide, shadcn/ui. No new deps expected (reuse `accordion`, `progress`, `sonner`, `card`, `input`, `textarea`, `checkbox`, `radio-group`/`select`).
+- Verify build + typecheck and spot-check responsive rendering after changes.
