@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ParaFunerariasRouteImport } from './routes/para-funerarias'
 import { Route as CrearMemorialRouteImport } from './routes/crear-memorial'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MemorialDemoRouteImport } from './routes/memorial.demo'
 
+const ParaFunerariasRoute = ParaFunerariasRouteImport.update({
+  id: '/para-funerarias',
+  path: '/para-funerarias',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CrearMemorialRoute = CrearMemorialRouteImport.update({
   id: '/crear-memorial',
   path: '/crear-memorial',
@@ -32,35 +38,51 @@ const MemorialDemoRoute = MemorialDemoRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/crear-memorial': typeof CrearMemorialRoute
+  '/para-funerarias': typeof ParaFunerariasRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/crear-memorial': typeof CrearMemorialRoute
+  '/para-funerarias': typeof ParaFunerariasRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/crear-memorial': typeof CrearMemorialRoute
+  '/para-funerarias': typeof ParaFunerariasRoute
   '/memorial/demo': typeof MemorialDemoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/crear-memorial' | '/memorial/demo'
+  fullPaths: '/' | '/crear-memorial' | '/para-funerarias' | '/memorial/demo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/crear-memorial' | '/memorial/demo'
-  id: '__root__' | '/' | '/crear-memorial' | '/memorial/demo'
+  to: '/' | '/crear-memorial' | '/para-funerarias' | '/memorial/demo'
+  id:
+    | '__root__'
+    | '/'
+    | '/crear-memorial'
+    | '/para-funerarias'
+    | '/memorial/demo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CrearMemorialRoute: typeof CrearMemorialRoute
+  ParaFunerariasRoute: typeof ParaFunerariasRoute
   MemorialDemoRoute: typeof MemorialDemoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/para-funerarias': {
+      id: '/para-funerarias'
+      path: '/para-funerarias'
+      fullPath: '/para-funerarias'
+      preLoaderRoute: typeof ParaFunerariasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/crear-memorial': {
       id: '/crear-memorial'
       path: '/crear-memorial'
@@ -88,6 +110,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CrearMemorialRoute: CrearMemorialRoute,
+  ParaFunerariasRoute: ParaFunerariasRoute,
   MemorialDemoRoute: MemorialDemoRoute,
 }
 export const routeTree = rootRouteImport
