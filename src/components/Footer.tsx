@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-1">
           <div className="flex items-baseline gap-0.5">
-            <span className="font-display text-2xl font-semibold">Memorí</span>
+            <span className="font-display text-2xl font-semibold">Terecuerdo</span>
             <span className="font-display text-2xl font-semibold text-gold">QR</span>
           </div>
           <p className="mt-3 max-w-xs text-sm text-primary-foreground/70">
@@ -56,7 +56,7 @@ export function Footer() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-5 text-xs text-primary-foreground/60 sm:flex-row">
-          <p>© 2026 MemoríQR. Todos los derechos reservados.</p>
+          <p>© 2026 TerecuerdoQR. Todos los derechos reservados.</p>
           <p>Hecho con cuidado para honrar cada historia.</p>
         </div>
       </div>

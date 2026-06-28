@@ -46,7 +46,7 @@ const faqs = [
   {
     icon: InfinityIcon,
     q: "¿El memorial es permanente?",
-    a: "Sí. MemoríQR está pensado para perdurar a través de las generaciones. El objetivo es que el recuerdo siga vivo y accesible en el tiempo.",
+    a: "Sí. TerecuerdoQR está pensado para perdurar a través de las generaciones. El objetivo es que el recuerdo siga vivo y accesible en el tiempo.",
   },
   {
     icon: Headphones,

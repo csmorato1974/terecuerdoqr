@@ -382,7 +382,7 @@ function CrearMemorial() {
                   aria-label="Consentimiento de contacto"
                 />
                 <span className="text-muted-foreground">
-                  Acepto que el equipo de MemoríQR me contacte sobre mi solicitud. Mis
+                  Acepto que el equipo de TerecuerdoQR me contacte sobre mi solicitud. Mis
                   datos se usarán únicamente para este fin.
                 </span>
               </label>
