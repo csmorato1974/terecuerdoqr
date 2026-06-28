@@ -28,7 +28,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { canonicalUrl } from "@/lib/seo";
-import flowerShop from "@/assets/flower-shop.jpg.asset.json";
+import flowerShop from "@/assets/flower-shop.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -376,6 +376,10 @@ function Home() {
             <img
               src={flowerShop.url}
               alt="Flores frescas en una floristería, evocando el cuidado y el recuerdo"
+              loading="lazy"
+              decoding="async"
+              width={393}
+              height={302}
               className="h-full w-full object-cover"
             />
           </div>
