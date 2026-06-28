@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
+import coverImage from "@/assets/memorial-cover-books.webp.asset.json";
+import portraitImage from "@/assets/memorial-portrait.webp.asset.json";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
