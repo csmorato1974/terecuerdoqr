@@ -28,6 +28,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { canonicalUrl } from "@/lib/seo";
+import memorialCoupleCemetery from "@/assets/memorial-couple-cemetery.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -373,8 +374,8 @@ function Home() {
         <Reveal>
           <div className="overflow-hidden rounded-3xl">
             <img
-              src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1100&q=80"
-              alt="Flores blancas delicadas iluminadas suavemente"
+              src={memorialCoupleCemetery.url}
+              alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
               className="h-full w-full object-cover"
             />
           </div>
