@@ -118,8 +118,8 @@ function MemorialDemo() {
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
           <img
-            src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=2000&q=80"
-            alt="Cielo sereno al atardecer sobre un paisaje tranquilo"
+            src={coverImage.url}
+            alt="Páginas de libros antiguos con una rosa, en tonos cálidos"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
