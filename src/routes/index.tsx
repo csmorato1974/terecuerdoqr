@@ -28,7 +28,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { canonicalUrl } from "@/lib/seo";
-import flowerShop from "@/assets/flower-shop.webp.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
