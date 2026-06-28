@@ -19,13 +19,13 @@ import { canonicalUrl } from "@/lib/seo";
 export const Route = createFileRoute("/contacto")({
   head: () => ({
     meta: [
-      { title: "Contacto — MemoríQR" },
+      { title: "Contacto — TerecuerdoQR" },
       {
         name: "description",
         content:
           "¿Tienes preguntas sobre los memoriales digitales con placa QR? Escríbenos. Te acompañamos con sensibilidad y sin compromiso.",
       },
-      { property: "og:title", content: "Contacto — MemoríQR" },
+      { property: "og:title", content: "Contacto — TerecuerdoQR" },
       {
         property: "og:description",
         content: "Estamos aquí para acompañarte. Escríbenos sin compromiso.",
