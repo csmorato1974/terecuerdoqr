@@ -1,28 +1,32 @@
 ## Objetivo
 
-Agregar la imagen de la pareja en el cementerio (escaneando la placa QR al atardecer) a la sección "Para las familias" de la página de inicio, que actualmente es solo texto centrado.
+En la página del memorial de demostración (`/memorial/demo`) reemplazar **dos** imágenes por la imagen subida:
+1. La **imagen de portada** (cabecera) → el fondo de páginas de libros antiguos con la rosa.
+2. El **retrato circular** → la foto de la señora mayor con el café que aparece en la imagen subida.
 
 ## Cambios
 
-1. **Subir la imagen al CDN**: optimizarla a WebP (sin pérdida visual apreciable) y crear el asset `couple-cemetery.webp` en `src/assets/`.
+1. **Preparar las imágenes y subirlas al CDN**:
+   - **Portada**: usar la imagen subida completa (páginas/rosa), optimizada a WebP, como asset en `src/assets/`.
+   - **Retrato**: recortar la zona del círculo con la señora mayor de la imagen subida y exportarla cuadrada (centrada), optimizada a WebP, como segundo asset en `src/assets/`.
+   - Ambas como pointers `.asset.json`.
 
-2. **Reestructurar la sección "Para las familias"** (`src/routes/index.tsx`, sección 4):
-   - Volver a un diseño de dos columnas en escritorio (`md:grid-cols-2`), con la imagen a un lado y el texto al otro.
-   - Imagen con esquinas redondeadas, `object-cover`, `loading="lazy"` y `decoding="async"` para carga rápida.
-   - Mantener el texto actual (encabezado, párrafos y botón "Ver un memorial de ejemplo").
-   - En móvil se apila la imagen sobre el texto.
+2. **Reemplazar en `src/routes/memorial.demo.tsx`** (sección "Cover + portrait"):
+   - Cambiar el `src` del `<img>` de cabecera (foto Unsplash del cielo) por el asset de portada.
+   - Cambiar el `src` del `<img>` del retrato circular por el asset de retrato.
+   - Mantener intacto todo lo demás (degradado, nombre, fechas, ubicación, cita y resto de la página).
+   - Actualizar el texto `alt` de ambas imágenes acorde a las nuevas fotos.
 
 ```text
-┌─────────────── Para las familias ───────────────┐
-│  ┌───────────────┐   PARA LAS FAMILIAS          │
-│  │   imagen       │   Una vida no cabe...         │
-│  │  (pareja en    │   párrafos + botón            │
-│  │   cementerio)  │                               │
-│  └───────────────┘                               │
-└──────────────────────────────────────────────────┘
+┌──────── Memorial demo ────────┐
+│   [NUEVA portada: libros+rosa] │  ← reemplazada
+│        (degradado)             │
+│      ( NUEVO retrato señora )  │  ← reemplazado
+│      Elena Martínez Rojas      │
+└────────────────────────────────┘
 ```
 
 ## Notas técnicas
 
-- La imagen se referencia vía pointer `.asset.json` importado en `index.tsx`.
-- `alt` descriptivo en español acorde al tono del sitio.
+- Ambas imágenes se referencian vía pointer `.asset.json` importado en `memorial.demo.tsx`.
+- No se modifica la `og:image` ni otras secciones salvo que lo pidas.
