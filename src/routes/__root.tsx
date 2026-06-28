@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MemoríQR — Su historia, siempre viva." },
+      { title: "TerecuerdoQR — Su historia, siempre viva." },
       {
         name: "description",
         content:
           "Memoriales digitales premium conectados a una placa QR. Honra y preserva la historia de quien amas, para siempre.",
       },
-      { name: "author", content: "MemoríQR" },
-      { property: "og:title", content: "MemoríQR — Su historia, siempre viva." },
+      { name: "author", content: "TerecuerdoQR" },
+      { property: "og:title", content: "TerecuerdoQR — Su historia, siempre viva." },
       {
         property: "og:description",
         content:
@@ -93,11 +93,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@MemoriQR" },
+      { name: "twitter:site", content: "@TerecuerdoQR" },
       { name: "twitter:title", content: "TerecuerdoQR — Su historia, siempre viva." },
-      { name: "description", content: "TerecuerdoQR Tributes is a web application for creating lasting digital memorials for loved ones." },
-      { property: "og:description", content: "TerecuerdoQR Tributes is a web application for creating lasting digital memorials for loved ones." },
-      { name: "twitter:description", content: "TerecuerdoQR Tributes is a web application for creating lasting digital memorials for loved ones." },
+      {
+        name: "twitter:description",
+        content:
+          "Memoriales digitales premium conectados a una placa QR. Honra y preserva la historia de quien amas, para siempre.",
+      },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
     ],
