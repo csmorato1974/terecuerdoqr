@@ -370,9 +370,22 @@ function Home() {
         </div>
       </section>
 
-      {/* Emotional band (for families) */}
-      <section className="mx-auto max-w-3xl px-5 py-24 text-center">
+      {/* Emotional band with image (for families) */}
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
         <Reveal>
+          <div className="overflow-hidden rounded-3xl">
+            <img
+              src={coupleCemetery.url}
+              alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={675}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
           <div>
             <p className="text-sm font-semibold tracking-widest text-gold uppercase">
               Para las familias
@@ -397,6 +410,7 @@ function Home() {
           </div>
         </Reveal>
       </section>
+
 
 
       {/* Business model segmentation */}
