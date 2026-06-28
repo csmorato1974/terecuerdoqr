@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
+import coverImage from "@/assets/memorial-cover-books.webp.asset.json";
+import portraitImage from "@/assets/memorial-portrait.webp.asset.json";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
@@ -116,8 +118,8 @@ function MemorialDemo() {
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
           <img
-            src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=2000&q=80"
-            alt="Cielo sereno al atardecer sobre un paisaje tranquilo"
+            src={coverImage.url}
+            alt="Páginas de libros antiguos con una rosa, en tonos cálidos"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
@@ -126,7 +128,7 @@ function MemorialDemo() {
         <div className="mx-auto max-w-4xl px-5">
           <div className="-mt-20 flex flex-col items-center text-center sm:-mt-24">
             <img
-              src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=400&q=80"
+              src={portraitImage.url}
               alt="Retrato de Elena Martínez Rojas"
               className="size-36 rounded-full border-4 border-background object-cover shadow-xl sm:size-44"
             />
