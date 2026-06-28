@@ -21,7 +21,7 @@ import { canonicalUrl } from "@/lib/seo";
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
     meta: [
-      { title: "En memoria de Elena Martínez Rojas — MemoríQR" },
+      { title: "En memoria de Elena Martínez Rojas — TerecuerdoQR" },
       {
         name: "description",
         content:
@@ -109,7 +109,7 @@ function MemorialDemo() {
     <SiteLayout>
       {/* Demo notice */}
       <div className="bg-gold/10 px-5 py-2.5 text-center text-xs font-medium text-foreground">
-        Esta es una página de demostración. Así se verá un memorial real en MemoríQR.
+        Esta es una página de demostración. Así se verá un memorial real en TerecuerdoQR.
       </div>
 
       {/* Cover + portrait */}
@@ -296,7 +296,7 @@ function MemorialDemo() {
                 Comparte este memorial
               </h2>
               <p className="mt-3 text-primary-foreground/80">
-                Cada placa MemoríQR lleva un código único. Al escanearlo, familiares
+                Cada placa TerecuerdoQR lleva un código único. Al escanearlo, familiares
                 y visitantes llegan a esta página desde cualquier lugar del mundo.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">

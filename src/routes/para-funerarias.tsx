@@ -24,13 +24,13 @@ import { canonicalUrl } from "@/lib/seo";
 export const Route = createFileRoute("/para-funerarias")({
   head: () => ({
     meta: [
-      { title: "Para funerarias, cementerios y marmolistas — MemoríQR" },
+      { title: "Para funerarias, cementerios y marmolistas — TerecuerdoQR" },
       {
         name: "description",
         content:
           "Ofrece a las familias un servicio diferencial: memoriales digitales con placa QR. Placas por volumen, panel de gestión y marca blanca.",
       },
-      { property: "og:title", content: "Alianzas profesionales — MemoríQR" },
+      { property: "og:title", content: "Alianzas profesionales — TerecuerdoQR" },
       {
         property: "og:description",
         content:
@@ -70,7 +70,7 @@ const benefits = [
   { icon: TrendingUp, title: "Placas QR por volumen", text: "Precios preferenciales y producción a tu ritmo." },
   { icon: LayoutDashboard, title: "Panel de gestión", text: "Administra todos los memoriales desde un solo lugar." },
   { icon: Palette, title: "Marca blanca", text: "Ofrece el servicio con la identidad de tu empresa." },
-  { icon: Plug, title: "Integración disponible", text: "Conecta MemoríQR con tus procesos y sistemas." },
+  { icon: Plug, title: "Integración disponible", text: "Conecta TerecuerdoQR con tus procesos y sistemas." },
   { icon: Headphones, title: "Acompañamiento comercial", text: "Un equipo dedicado a tu crecimiento." },
   { icon: Check, title: "Capacitación incluida", text: "Tu equipo aprende a ofrecerlo con sensibilidad." },
 ];

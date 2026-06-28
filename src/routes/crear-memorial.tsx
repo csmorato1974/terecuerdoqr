@@ -15,13 +15,13 @@ import { canonicalUrl } from "@/lib/seo";
 export const Route = createFileRoute("/crear-memorial")({
   head: () => ({
     meta: [
-      { title: "Iniciar solicitud de memorial — MemoríQR" },
+      { title: "Iniciar solicitud de memorial — TerecuerdoQR" },
       {
         name: "description",
         content:
           "Comienza el homenaje. Un proceso guiado y acompañado para reunir la historia, las fotos y los recuerdos de quien amas. Sin pagos ni compromisos.",
       },
-      { property: "og:title", content: "Iniciar solicitud de memorial — MemoríQR" },
+      { property: "og:title", content: "Iniciar solicitud de memorial — TerecuerdoQR" },
       {
         property: "og:description",
         content: "Un proceso guiado y acompañado para honrar una vida.",
@@ -382,7 +382,7 @@ function CrearMemorial() {
                   aria-label="Consentimiento de contacto"
                 />
                 <span className="text-muted-foreground">
-                  Acepto que el equipo de MemoríQR me contacte sobre mi solicitud. Mis
+                  Acepto que el equipo de TerecuerdoQR me contacte sobre mi solicitud. Mis
                   datos se usarán únicamente para este fin.
                 </span>
               </label>
