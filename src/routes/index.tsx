@@ -389,7 +389,7 @@ function Home() {
             </h2>
             <p className="mt-5 leading-relaxed text-muted-foreground">
               Detrás de cada nombre grabado hay risas, viajes, recetas, canciones
-              y palabras que merecen recordarse. MemoríQR convierte el lugar de
+              y palabras que merecen recordarse. TerecuerdoQR convierte el lugar de
               descanso en una puerta hacia toda esa historia.
             </p>
             <p className="mt-4 leading-relaxed text-muted-foreground">
