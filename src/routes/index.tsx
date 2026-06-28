@@ -28,6 +28,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { canonicalUrl } from "@/lib/seo";
+import coupleCemetery from "@/assets/couple-cemetery.webp.asset.json";
 
 
 export const Route = createFileRoute("/")({
