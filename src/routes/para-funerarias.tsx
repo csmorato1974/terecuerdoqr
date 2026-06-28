@@ -24,13 +24,13 @@ import { canonicalUrl } from "@/lib/seo";
 export const Route = createFileRoute("/para-funerarias")({
   head: () => ({
     meta: [
-      { title: "Para funerarias, cementerios y marmolistas — MemoríQR" },
+      { title: "Para funerarias, cementerios y marmolistas — TerecuerdoQR" },
       {
         name: "description",
         content:
           "Ofrece a las familias un servicio diferencial: memoriales digitales con placa QR. Placas por volumen, panel de gestión y marca blanca.",
       },
-      { property: "og:title", content: "Alianzas profesionales — MemoríQR" },
+      { property: "og:title", content: "Alianzas profesionales — TerecuerdoQR" },
       {
         property: "og:description",
         content:
