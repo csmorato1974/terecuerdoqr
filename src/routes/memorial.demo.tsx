@@ -128,7 +128,7 @@ function MemorialDemo() {
         <div className="mx-auto max-w-4xl px-5">
           <div className="-mt-20 flex flex-col items-center text-center sm:-mt-24">
             <img
-              src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=400&q=80"
+              src={portraitImage.url}
               alt="Retrato de Elena Martínez Rojas"
               className="size-36 rounded-full border-4 border-background object-cover shadow-xl sm:size-44"
             />
