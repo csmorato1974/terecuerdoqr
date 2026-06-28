@@ -369,22 +369,9 @@ function Home() {
         </div>
       </section>
 
-      {/* Emotional band with image (for families) */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
+      {/* Emotional band (for families) */}
+      <section className="mx-auto max-w-3xl px-5 py-24 text-center">
         <Reveal>
-          <div className="overflow-hidden rounded-3xl">
-            <img
-              src={flowerShop.url}
-              alt="Flores frescas en una floristería, evocando el cuidado y el recuerdo"
-              loading="lazy"
-              decoding="async"
-              width={393}
-              height={302}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>
           <div>
             <p className="text-sm font-semibold tracking-widest text-gold uppercase">
               Para las familias
@@ -409,6 +396,7 @@ function Home() {
           </div>
         </Reveal>
       </section>
+
 
       {/* Business model segmentation */}
       <section className="bg-secondary">
