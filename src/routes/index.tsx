@@ -376,6 +376,10 @@ function Home() {
             <img
               src={flowerShop.url}
               alt="Flores frescas en una floristería, evocando el cuidado y el recuerdo"
+              loading="lazy"
+              decoding="async"
+              width={393}
+              height={302}
               className="h-full w-full object-cover"
             />
           </div>
