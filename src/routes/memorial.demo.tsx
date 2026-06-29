@@ -19,6 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
 import coverImage from "@/assets/cover.webp.asset.json";
 import portraitImage from "@/assets/portrait.webp.asset.json";
+import paperTexture from "@/assets/paper-texture.jpg";
+import floralOverlay from "@/assets/floral-overlay.png";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
