@@ -1,28 +1,15 @@
 ## Problema
 
-La imagen de portada (`cover.webp`) es el montaje original subido, que **ya incluye** el retrato circular de la señora incrustado en el centro-inferior. Encima de esa portada se muestra además el retrato circular superpuesto (`portrait.webp`). Resultado: la modelo aparece **dos veces**.
-
-## Objetivo
-
-Que solo quede **una** fotografía circular de la modelo (el retrato superpuesto), eliminando el círculo duplicado que viene incrustado dentro del fondo de portada.
+Sobre la foto de portada hay una capa de degradado semitransparente (`bg-gradient-to-t from-background/60`) que la opaca y le da aspecto "empañado". El usuario quiere ver la foto más nítida.
 
 ## Cambios
 
-1. **Generar una portada limpia (sin el retrato incrustado):**
-   - Editar la imagen de portada para **eliminar el círculo de la señora** que está incrustado en el centro-inferior, rellenando esa zona con el fondo de libros antiguos / rosa para que quede continuo y natural.
-   - Optimizar a WebP y subir como nuevo asset (`cover.webp` actualizado).
+En `src/routes/memorial.demo.tsx`, sección "Cover + portrait":
 
-2. **Actualizar `src/routes/memorial.demo.tsx`:**
-   - Apuntar el `<img>` de portada al nuevo asset de portada limpia.
-   - Mantener intacto el retrato circular superpuesto (`portrait.webp`) — ese es el único que debe quedar visible.
-   - No se modifica ningún texto ni dato de la ficha del demo.
+- **Quitar (o reducir al mínimo) la capa de degradado** que cubre la imagen de portada, para que la fotografía se vea limpia y nítida.
+- Mantener el retrato circular, el nombre "Elena Martínez Rojas", las fechas (1947 — 2024) y el resto del texto exactamente igual; esos textos están debajo de la imagen, sobre el fondo normal de la página, así que se mantienen legibles sin la capa opaca.
+- No se cambian datos ni otras secciones.
 
-```text
-Antes:  fondo + círculo incrustado  +  círculo superpuesto   → DUPLICADO
-Después: fondo limpio (sin círculo)  +  círculo superpuesto   → solo UNO
-```
+## Nota
 
-## Notas técnicas
-
-- La edición del fondo se hará con la herramienta de edición de imágenes (relleno de la zona del círculo con el fondo de papeles/rosa).
-- Se revisará el resultado antes de subirlo para confirmar que no quedan restos del círculo incrustado.
+Si al quitar el degradado por completo la zona inferior de la foto compite visualmente con el retrato circular, se puede dejar un degradado muy sutil solo en el borde inferior; de lo contrario se elimina del todo para máxima nitidez.
