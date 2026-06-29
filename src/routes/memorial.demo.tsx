@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
 import coverImage from "@/assets/cover.webp.asset.json";
-import portraitImage from "@/assets/portrait.webp.asset.json";
+import portraitImage from "@/assets/portrait-header.jpg.asset.json";
 import paperTexture from "@/assets/paper-texture.jpg";
 import floralOverlay from "@/assets/floral-overlay.png";
 import memorialGallery1 from "@/assets/memorial-gallery-1.jpg.asset.json";
