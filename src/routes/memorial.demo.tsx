@@ -367,6 +367,7 @@ function MemorialDemo() {
           </div>
         </div>
       </section>
+      </div>
     </SiteLayout>
   );
 }
