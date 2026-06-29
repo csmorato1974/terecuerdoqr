@@ -19,6 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
 import coverImage from "@/assets/cover.webp.asset.json";
 import portraitImage from "@/assets/portrait.webp.asset.json";
+import paperTexture from "@/assets/paper-texture.jpg";
+import floralOverlay from "@/assets/floral-overlay.png";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
@@ -114,6 +116,40 @@ function MemorialDemo() {
         Esta es una página de demostración. Así se verá un memorial real en TerecuerdoQR.
       </div>
 
+      {/* Warm decorative wrapper: letter-paper texture + soft rose florals */}
+      <div className="relative isolate overflow-hidden">
+        {/* Paper base + warm wash */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 bg-background" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-20 opacity-[0.62] mix-blend-multiply"
+          style={{ backgroundImage: `url(${paperTexture})`, backgroundSize: "620px" }}
+        />
+        {/* All-over floral trama (subtle, blurred) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.40] blur-[0.5px] mix-blend-multiply"
+          style={{ backgroundImage: `url(${floralOverlay})`, backgroundSize: "520px" }}
+        />
+        {/* Larger corner bouquets for a decorative, non-linear feel */}
+        <img
+          src={floralOverlay}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="pointer-events-none absolute -right-28 top-[480px] -z-10 w-[34rem] max-w-[78vw] rotate-[8deg] opacity-[0.55] mix-blend-multiply select-none"
+        />
+        <img
+          src={floralOverlay}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="pointer-events-none absolute -left-32 bottom-[700px] -z-10 w-[32rem] max-w-[78vw] -rotate-[14deg] opacity-[0.50] mix-blend-multiply select-none"
+        />
+
+
+
+
       {/* Cover + portrait */}
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
@@ -175,7 +211,8 @@ function MemorialDemo() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-secondary">
+      <section className="relative">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-secondary/40" />
         <div className="mx-auto max-w-3xl px-5 py-20">
           <Reveal>
             <h2 className="font-display text-2xl font-semibold text-foreground">Línea de vida</h2>
@@ -184,7 +221,7 @@ function MemorialDemo() {
             {timeline.map((t, i) => (
               <Reveal key={t.year} delay={i * 0.05}>
                 <div className="relative">
-                  <span className="absolute -left-[31px] top-1.5 size-3 rounded-full bg-gold ring-4 ring-secondary" />
+                  <span className="absolute -left-[31px] top-1.5 size-3 rounded-full bg-gold ring-4 ring-background" />
                   <p className="font-display text-lg font-semibold text-primary">{t.year}</p>
                   <p className="mt-1 text-muted-foreground">{t.text}</p>
                 </div>
@@ -217,7 +254,8 @@ function MemorialDemo() {
       </section>
 
       {/* Video */}
-      <section className="bg-secondary">
+      <section className="relative">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-secondary/40" />
         <div className="mx-auto max-w-4xl px-5 py-20">
           <Reveal>
             <h2 className="font-display text-2xl font-semibold text-foreground">En movimiento</h2>
@@ -338,6 +376,7 @@ function MemorialDemo() {
           </div>
         </div>
       </section>
+      </div>
     </SiteLayout>
   );
 }
