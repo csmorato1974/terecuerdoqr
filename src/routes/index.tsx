@@ -371,45 +371,46 @@ function Home() {
       </section>
 
       {/* Emotional band with image (for families) */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
-        <Reveal>
-          <div className="overflow-hidden rounded-3xl">
-            <img
-              src={coupleCemetery.url}
-              alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
-              loading="lazy"
-              decoding="async"
-              width={1200}
-              height={675}
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div>
-            <p className="text-sm font-semibold tracking-widest text-gold uppercase">
-              Para las familias
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-              Una vida no cabe en una fecha
-            </h2>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Detrás de cada nombre grabado hay risas, viajes, recetas, canciones
-              y palabras que merecen recordarse. TerecuerdoQR convierte el lugar de
-              descanso en una puerta hacia toda esa historia.
-            </p>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Un espacio sobrio y bello, sin ruido, donde la memoria se cuida con
-              la dignidad que merece.
-            </p>
-            <Button asChild className="mt-7 bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link to="/memorial/demo">
-                Ver un memorial de ejemplo <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
-        </Reveal>
+      <section className="relative overflow-hidden">
+        <img
+          src={coupleCemetery.url}
+          alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Velo difuminado discreto: foto visible, texto protagonista */}
+        <div className="absolute inset-0 bg-background/55 backdrop-blur-[3px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+
+        <div className="relative mx-auto max-w-6xl px-5 py-28 md:py-36">
+          <Reveal>
+            <div className="max-w-xl">
+              <p className="text-sm font-semibold tracking-widest text-gold uppercase">
+                Para las familias
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-semibold text-foreground sm:text-4xl">
+                Una vida no cabe en una fecha
+              </h2>
+              <p className="mt-5 leading-relaxed text-foreground/80">
+                Detrás de cada nombre grabado hay risas, viajes, recetas, canciones
+                y palabras que merecen recordarse. TerecuerdoQR convierte el lugar de
+                descanso en una puerta hacia toda esa historia.
+              </p>
+              <p className="mt-4 leading-relaxed text-foreground/80">
+                Un espacio sobrio y bello, sin ruido, donde la memoria se cuida con
+                la dignidad que merece.
+              </p>
+              <Button asChild className="mt-7 bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link to="/memorial/demo">
+                  Ver un memorial de ejemplo <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            </div>
+          </Reveal>
+        </div>
       </section>
+
 
 
 
