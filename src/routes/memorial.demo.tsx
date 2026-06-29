@@ -125,28 +125,28 @@ function MemorialDemo() {
           className="pointer-events-none absolute inset-0 -z-20 opacity-[0.62] mix-blend-multiply"
           style={{ backgroundImage: `url(${paperTexture})`, backgroundSize: "620px" }}
         />
-        {/* Soft floral accents */}
+        {/* All-over floral trama (subtle, blurred) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.16] blur-[0.5px]"
+          style={{ backgroundImage: `url(${floralOverlay})`, backgroundSize: "560px" }}
+        />
+        {/* Larger corner bouquets for a decorative, non-linear feel */}
         <img
           src={floralOverlay}
           alt=""
           aria-hidden
           loading="lazy"
-          className="pointer-events-none absolute -right-28 top-[520px] -z-10 w-[36rem] max-w-[78vw] rotate-[8deg] opacity-[0.22] blur-[1px] select-none"
+          className="pointer-events-none absolute -right-28 top-[480px] -z-10 w-[34rem] max-w-[78vw] rotate-[8deg] opacity-[0.30] select-none"
         />
         <img
           src={floralOverlay}
           alt=""
           aria-hidden
           loading="lazy"
-          className="pointer-events-none absolute -left-32 top-[1500px] -z-10 w-[32rem] max-w-[78vw] -rotate-[14deg] opacity-[0.18] blur-[1px] select-none"
+          className="pointer-events-none absolute -left-32 bottom-[700px] -z-10 w-[32rem] max-w-[78vw] -rotate-[14deg] opacity-[0.26] select-none"
         />
-        <img
-          src={floralOverlay}
-          alt=""
-          aria-hidden
-          loading="lazy"
-          className="pointer-events-none absolute -right-32 bottom-[680px] -z-10 w-[34rem] max-w-[78vw] rotate-[18deg] opacity-[0.20] blur-[1px] select-none"
-        />
+
 
 
       {/* Cover + portrait */}
