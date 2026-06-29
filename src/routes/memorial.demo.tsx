@@ -155,7 +155,7 @@ function MemorialDemo() {
           <h2 className="font-display text-2xl font-semibold text-foreground">Su historia</h2>
           <div className="mt-5 space-y-4 leading-relaxed text-muted-foreground">
             <p>
-              Elena nació en Popayán en 1947, la mayor de cinco hermanos. Desde
+              Elena nació en Tacna en 1947, la mayor de cinco hermanos. Desde
               niña aprendió el oficio del pan junto a su madre, un arte que la
               acompañaría toda la vida y que convertiría en el corazón de su barrio.
             </p>
