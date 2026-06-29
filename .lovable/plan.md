@@ -1,28 +1,32 @@
 ## Objetivo
 
-Agregar la imagen de la pareja en el cementerio (escaneando la placa QR al atardecer) a la sección "Para las familias" de la página de inicio, que actualmente es solo texto centrado.
+Reemplazar **las dos imágenes** del memorial de demostración (`src/routes/memorial/demo.tsx`) usando la imagen subida, que es un montaje con el fondo de portada (libros antiguos + rosa) y el retrato circular (señora con la taza). No se modifica ningún texto ni dato de la ficha (nombre, fechas, lugar, biografía, línea de vida, galería, mensajes, etc.).
 
 ## Cambios
 
-1. **Subir la imagen al CDN**: optimizarla a WebP (sin pérdida visual apreciable) y crear el asset `couple-cemetery.webp` en `src/assets/`.
+1. **Preparar las imágenes** (optimizadas a WebP, sin pérdida visual apreciable):
+   - `cover.webp` → la imagen completa subida, usada como fondo de la portada.
+   - `portrait.webp` → recorte de la zona del retrato circular (la señora sonriendo con la taza), centrado, para el círculo del retrato.
+   - Subir ambas al CDN como assets (`src/assets/cover.webp.asset.json` y `src/assets/portrait.webp.asset.json`).
 
-2. **Reestructurar la sección "Para las familias"** (`src/routes/index.tsx`, sección 4):
-   - Volver a un diseño de dos columnas en escritorio (`md:grid-cols-2`), con la imagen a un lado y el texto al otro.
-   - Imagen con esquinas redondeadas, `object-cover`, `loading="lazy"` y `decoding="async"` para carga rápida.
-   - Mantener el texto actual (encabezado, párrafos y botón "Ver un memorial de ejemplo").
-   - En móvil se apila la imagen sobre el texto.
+2. **Actualizar `src/routes/memorial.demo.tsx`** (sección "Cover + portrait"):
+   - Reemplazar el `src` del `<img>` de portada (actualmente la foto de Unsplash del atardecer) por `cover.webp`.
+   - Reemplazar el `src` del `<img>` del retrato circular (actualmente la foto de Unsplash) por `portrait.webp`.
+   - Actualizar el `alt` de ambas imágenes de forma descriptiva en español.
+   - Mantener intactos el degradado, el tamaño/forma del círculo, el nombre, las fechas, el lugar y todo el resto de la página.
 
 ```text
-┌─────────────── Para las familias ───────────────┐
-│  ┌───────────────┐   PARA LAS FAMILIAS          │
-│  │   imagen       │   Una vida no cabe...         │
-│  │  (pareja en    │   párrafos + botón            │
-│  │   cementerio)  │                               │
-│  └───────────────┘                               │
-└──────────────────────────────────────────────────┘
+┌──────────── Cover (cover.webp) ────────────┐
+│   fondo libros antiguos + rosa             │
+│            ● retrato circular              │
+│            (portrait.webp)                 │
+│         Elena Martínez Rojas               │
+│            1947 — 2024                      │
+└────────────────────────────────────────────┘
 ```
 
 ## Notas técnicas
 
-- La imagen se referencia vía pointer `.asset.json` importado en `index.tsx`.
-- `alt` descriptivo en español acorde al tono del sitio.
+- Las imágenes se referencian vía pointer `.asset.json` importado en el archivo de ruta.
+- `og:image` del head se deja como está salvo que se solicite cambiarlo (es una URL de Unsplash); puedo actualizarlo a la nueva portada si lo prefieres.
+- No se tocan datos ni textos del demo, solo las dos fuentes de imagen.
