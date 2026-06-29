@@ -116,6 +116,31 @@ function MemorialDemo() {
         Esta es una página de demostración. Así se verá un memorial real en TerecuerdoQR.
       </div>
 
+      {/* Warm decorative wrapper: letter-paper texture + soft rose florals */}
+      <div className="relative isolate overflow-hidden">
+        {/* Paper base + warm wash */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 bg-background" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-20 opacity-[0.62] mix-blend-multiply"
+          style={{ backgroundImage: `url(${paperTexture})`, backgroundSize: "620px" }}
+        />
+        {/* Faint floral accents */}
+        <img
+          src={floralOverlay}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="pointer-events-none absolute -right-24 top-[460px] -z-10 w-[34rem] max-w-[70vw] rotate-[8deg] opacity-[0.14] blur-[1.5px] select-none"
+        />
+        <img
+          src={floralOverlay}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="pointer-events-none absolute -left-28 bottom-[420px] -z-10 w-[30rem] max-w-[70vw] -rotate-[12deg] opacity-[0.12] blur-[1.5px] select-none"
+        />
+
       {/* Cover + portrait */}
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
