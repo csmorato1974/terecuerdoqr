@@ -122,7 +122,7 @@ function MemorialDemo() {
             alt="Páginas de libros antiguos con una rosa, fondo conmemorativo"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+          
         </div>
 
         <div className="mx-auto max-w-4xl px-5">
