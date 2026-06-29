@@ -261,25 +261,15 @@ function MemorialDemo() {
           <h2 className="font-display text-2xl font-semibold text-foreground">Galería</h2>
           <p className="mt-2 text-muted-foreground">Recuerdos familiares dispuestos como un mosaico vivo.</p>
         </Reveal>
-        <div className="mt-8 columns-2 gap-4 space-y-4 md:columns-3 md:gap-5 md:space-y-5">
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-6 md:auto-rows-[130px] md:gap-5">
           {gallery.map((item, i) => (
-            <div key={item.src} className="break-inside-avoid">
+            <div key={item.src} className={item.frameClassName}>
               <Reveal delay={(i % 3) * 0.08}>
-                <figure className="group overflow-hidden rounded-xl border border-border/60 bg-card/50 shadow-sm">
+                <figure className="group h-full w-full overflow-hidden rounded-xl border border-border/60 bg-card/50 shadow-sm">
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${
-                      i === 0
-                        ? "aspect-[4/3]"
-                        : i === 1
-                          ? "aspect-[3/4]"
-                          : i === 2
-                            ? "aspect-[4/5]"
-                            : i === 3
-                              ? "aspect-[3/5]"
-                              : "aspect-[5/4]"
-                    }`}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                 </figure>
