@@ -21,6 +21,11 @@ import coverImage from "@/assets/cover.webp.asset.json";
 import portraitImage from "@/assets/portrait.webp.asset.json";
 import paperTexture from "@/assets/paper-texture.jpg";
 import floralOverlay from "@/assets/floral-overlay.png";
+import memorialGallery1 from "@/assets/memorial-gallery-1.jpg.asset.json";
+import memorialGallery2 from "@/assets/memorial-gallery-2.jpg.asset.json";
+import memorialGallery3 from "@/assets/memorial-gallery-3.jpg.asset.json";
+import memorialGallery4 from "@/assets/memorial-gallery-4.jpg.asset.json";
+import memorialGallery5 from "@/assets/memorial-gallery-5.jpg.asset.json";
 
 export const Route = createFileRoute("/memorial/demo")({
   head: () => ({
@@ -50,12 +55,31 @@ export const Route = createFileRoute("/memorial/demo")({
 });
 
 const gallery = [
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?auto=format&fit=crop&w=700&q=80",
-  "https://images.unsplash.com/photo-1529068755536-a5ade0dcb4e8?auto=format&fit=crop&w=700&q=80",
+  {
+    src: memorialGallery2.url,
+    alt: "Familia sentada en el bosque compartiendo un momento juntos",
+    frameClassName: "md:col-span-7 md:row-span-2 md:aspect-[4/3]",
+  },
+  {
+    src: memorialGallery1.url,
+    alt: "Pareja mayor abrazada con ternura al aire libre",
+    frameClassName: "md:col-span-5 md:row-span-2 md:aspect-[3/4]",
+  },
+  {
+    src: memorialGallery4.url,
+    alt: "Abuela retratada junto a dos generaciones más jóvenes de su familia",
+    frameClassName: "md:col-span-4 md:aspect-[4/5]",
+  },
+  {
+    src: memorialGallery3.url,
+    alt: "Abuelos con dos niñas sosteniendo flores frente a su hogar",
+    frameClassName: "md:col-span-3 md:aspect-[3/5]",
+  },
+  {
+    src: memorialGallery5.url,
+    alt: "Padres mirando con cariño a su hija pequeña en brazos",
+    frameClassName: "md:col-span-5 md:aspect-[5/4]",
+  },
 ];
 
 const timeline = [
@@ -232,23 +256,25 @@ function MemorialDemo() {
       </section>
 
       {/* Gallery */}
-      <section className="mx-auto max-w-5xl px-5 py-20">
+      <section className="mx-auto max-w-6xl px-5 py-20">
         <Reveal>
           <h2 className="font-display text-2xl font-semibold text-foreground">Galería</h2>
-          <p className="mt-2 text-muted-foreground">Momentos que guardamos con cariño.</p>
+          <p className="mt-2 text-muted-foreground">Recuerdos familiares dispuestos como un mosaico vivo.</p>
         </Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-          {gallery.map((src, i) => (
-            <Reveal key={src} delay={(i % 3) * 0.08}>
-              <div className="aspect-square overflow-hidden rounded-xl">
-                <img
-                  src={src}
-                  alt={`Recuerdo ${i + 1} de Elena`}
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-            </Reveal>
+        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-6 md:auto-rows-[130px] md:gap-5">
+          {gallery.map((item, i) => (
+            <div key={item.src} className={item.frameClassName}>
+              <Reveal delay={(i % 3) * 0.08}>
+                <figure className="group h-full w-full overflow-hidden rounded-xl border border-border/60 bg-card/50 shadow-sm">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </figure>
+              </Reveal>
+            </div>
           ))}
         </div>
       </section>
