@@ -249,8 +249,8 @@ function Home() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=2000&q=80"
-            alt="Campo sereno iluminado por una luz cálida"
+            src={coupleCemetery.url}
+            alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/70 to-primary/85" />
@@ -373,8 +373,8 @@ function Home() {
       {/* Emotional band with image (for families) */}
       <section className="relative overflow-hidden">
         <img
-          src={coupleCemetery.url}
-          alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
+          src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=2000&q=80"
+          alt="Campo sereno iluminado por una luz cálida al atardecer"
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
