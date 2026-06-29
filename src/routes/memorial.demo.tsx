@@ -212,7 +212,7 @@ function MemorialDemo() {
             {timeline.map((t, i) => (
               <Reveal key={t.year} delay={i * 0.05}>
                 <div className="relative">
-                  <span className="absolute -left-[31px] top-1.5 size-3 rounded-full bg-gold ring-4 ring-secondary" />
+                  <span className="absolute -left-[31px] top-1.5 size-3 rounded-full bg-gold ring-4 ring-background" />
                   <p className="font-display text-lg font-semibold text-primary">{t.year}</p>
                   <p className="mt-1 text-muted-foreground">{t.text}</p>
                 </div>
