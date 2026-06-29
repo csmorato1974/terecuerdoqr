@@ -253,30 +253,26 @@ function Home() {
             alt="Una pareja recuerda a un ser querido escaneando la placa QR de su lápida al atardecer"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/70 to-primary/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/65 to-primary/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-primary/30" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[88vh] max-w-4xl flex-col items-center justify-center px-5 py-24 text-center">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-primary/30 px-4 py-1.5 text-xs font-medium tracking-wide text-gold">
-              Memoriales digitales con placa QR
-            </span>
-          </Reveal>
+        <div className="relative mx-auto flex min-h-[88vh] max-w-5xl flex-col items-start justify-center px-5 py-24 text-left">
           <Reveal delay={0.1}>
-            <h1 className="mt-6 font-display text-4xl font-semibold leading-tight text-primary-foreground sm:text-6xl">
+            <h1 className="max-w-2xl font-display text-4xl font-semibold leading-tight text-primary-foreground sm:text-6xl">
               Su historia,
               <br />
               <span className="text-gold">siempre viva.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
               Un homenaje digital sereno y duradero para quien amas, accesible
               con un simple escaneo desde su lugar de descanso.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row">
               <Button
                 asChild
                 size="lg"
