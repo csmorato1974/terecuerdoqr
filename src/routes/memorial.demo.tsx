@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { canonicalUrl } from "@/lib/seo";
-import coverImage from "@/assets/cover.webp.asset.json";
+import coverImage from "@/assets/cover-clean.png";
 import portraitImage from "@/assets/portrait-header.jpg.asset.json";
 import paperTexture from "@/assets/paper-texture.jpg";
 import floralOverlay from "@/assets/floral-overlay.png";
@@ -178,7 +178,7 @@ function MemorialDemo() {
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
           <img
-            src={coverImage.url}
+            src={coverImage}
             alt="Páginas de libros antiguos con una rosa, fondo conmemorativo"
             className="h-full w-full object-cover"
           />
