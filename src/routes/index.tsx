@@ -379,9 +379,9 @@ function Home() {
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Velo difuminado discreto: foto visible, texto protagonista */}
-        <div className="absolute inset-0 bg-background/55 backdrop-blur-[3px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+        {/* Velo difuminado: fuerte tras el texto (izquierda), la foto nítida a la derecha */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
 
         <div className="relative mx-auto max-w-6xl px-5 py-28 md:py-36">
           <Reveal>
