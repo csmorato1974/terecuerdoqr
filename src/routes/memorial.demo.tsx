@@ -202,7 +202,8 @@ function MemorialDemo() {
       </section>
 
       {/* Timeline */}
-      <section className="bg-secondary">
+      <section className="relative">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-secondary/40" />
         <div className="mx-auto max-w-3xl px-5 py-20">
           <Reveal>
             <h2 className="font-display text-2xl font-semibold text-foreground">Línea de vida</h2>
