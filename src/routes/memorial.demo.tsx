@@ -178,7 +178,7 @@ function MemorialDemo() {
       <section className="relative">
         <div className="h-64 w-full overflow-hidden sm:h-80 md:h-96">
           <img
-            src={coverImage.url}
+            src={coverImage}
             alt="Páginas de libros antiguos con una rosa, fondo conmemorativo"
             className="h-full w-full object-cover"
           />
