@@ -57,7 +57,7 @@ const gallery = [
 ];
 
 const timeline = [
-  { year: "1947", text: "Nace en Popayán, una mañana de abril." },
+  { year: "1947", text: "Nace en Tacna, una mañana de abril." },
   { year: "1969", text: "Se casa con Ramón, su compañero de toda la vida." },
   { year: "1972", text: "Llega su primera hija; serían tres en total." },
   { year: "1985", text: "Abre la panadería del barrio, su gran orgullo." },
@@ -140,7 +140,7 @@ function MemorialDemo() {
             </h1>
             <p className="mt-3 font-display text-lg text-muted-foreground">1947 — 2024</p>
             <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin className="size-4" /> Popayán, Colombia
+              <MapPin className="size-4" /> Tacna, Perú
             </p>
             <p className="mt-5 max-w-xl font-display text-lg italic text-foreground">
               “Madre, abuela y panadera del barrio. Quien la conoció, la recuerda con una sonrisa.”
