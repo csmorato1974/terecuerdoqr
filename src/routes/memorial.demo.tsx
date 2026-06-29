@@ -58,27 +58,27 @@ const gallery = [
   {
     src: memorialGallery2.url,
     alt: "Familia sentada en el bosque compartiendo un momento juntos",
-    frameClassName: "md:col-span-7 md:row-span-2 md:aspect-[4/3]",
+    frameClassName: "col-span-2 row-span-2 min-h-[260px] md:col-span-4 md:min-h-[420px]",
   },
   {
     src: memorialGallery1.url,
     alt: "Pareja mayor abrazada con ternura al aire libre",
-    frameClassName: "md:col-span-5 md:row-span-2 md:aspect-[3/4]",
+    frameClassName: "col-span-1 row-span-2 min-h-[260px] md:col-span-2 md:min-h-[420px]",
   },
   {
     src: memorialGallery4.url,
     alt: "Abuela retratada junto a dos generaciones más jóvenes de su familia",
-    frameClassName: "md:col-span-4 md:aspect-[4/5]",
+    frameClassName: "col-span-1 min-h-[190px] md:col-span-2 md:min-h-[260px]",
   },
   {
     src: memorialGallery3.url,
     alt: "Abuelos con dos niñas sosteniendo flores frente a su hogar",
-    frameClassName: "md:col-span-3 md:aspect-[3/5]",
+    frameClassName: "col-span-1 min-h-[250px] md:col-span-1 md:min-h-[320px]",
   },
   {
     src: memorialGallery5.url,
     alt: "Padres mirando con cariño a su hija pequeña en brazos",
-    frameClassName: "md:col-span-5 md:aspect-[5/4]",
+    frameClassName: "col-span-2 min-h-[220px] md:col-span-3 md:min-h-[260px]",
   },
 ];
 
@@ -261,20 +261,19 @@ function MemorialDemo() {
           <h2 className="font-display text-2xl font-semibold text-foreground">Galería</h2>
           <p className="mt-2 text-muted-foreground">Recuerdos familiares dispuestos como un mosaico vivo.</p>
         </Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-6 md:auto-rows-[130px] md:gap-5">
-          {gallery.map((item, i) => (
-            <div key={item.src} className={item.frameClassName}>
-              <Reveal delay={(i % 3) * 0.08}>
-                <figure className="group h-full w-full overflow-hidden rounded-xl border border-border/60 bg-card/50 shadow-sm">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    loading="lazy"
-                  />
-                </figure>
-              </Reveal>
-            </div>
+        <div className="mt-8 grid auto-rows-[minmax(140px,_auto)] grid-cols-2 gap-4 md:grid-cols-6 md:gap-5">
+          {gallery.map((item) => (
+            <figure
+              key={item.src}
+              className={`group relative h-full w-full overflow-hidden rounded-xl border border-border/60 bg-card/50 shadow-sm ${item.frameClassName}`}
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </figure>
           ))}
         </div>
       </section>
