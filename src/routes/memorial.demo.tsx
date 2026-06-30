@@ -403,6 +403,7 @@ function MemorialDemo() {
         </div>
       </section>
       </div>
+      <AmbientAudioToggle />
     </SiteLayout>
   );
 }
