@@ -12,6 +12,7 @@ import {
   Link2,
 } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { AmbientAudioToggle } from "@/components/AmbientAudioToggle";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
