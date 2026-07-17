@@ -494,58 +494,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Demo preview */}
-      <section className="bg-secondary">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-2">
-          <Reveal>
-            <div>
-              <p className="text-sm font-semibold tracking-widest text-gold uppercase">
-                Una muestra
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-semibold text-foreground sm:text-4xl">
-                Mira cómo se ve un memorial
-              </h2>
-              <p className="mt-5 leading-relaxed text-muted-foreground">
-                Recorre un ejemplo real: portada, retrato, biografía, galería, línea de
-                vida y muro de recuerdos. Así de digno y sereno se verá el homenaje de
-                tu ser querido.
-              </p>
-              <Button asChild className="mt-7 bg-gold text-gold-foreground hover:bg-gold/90">
-                <Link to="/memorial/demo">
-                  Ver el memorial de ejemplo <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <Link to="/memorial/demo" className="group block">
-              <Card className="overflow-hidden border-border p-0 shadow-lg transition-shadow group-hover:shadow-xl">
-                <div className="relative h-44 overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?auto=format&fit=crop&w=1200&q=80"
-                    alt="Portada serena de un memorial de ejemplo"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="-mt-10 px-6 pb-6">
-                  <img
-                    src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?auto=format&fit=crop&w=200&q=80"
-                    alt="Retrato del memorial de ejemplo"
-                    className="size-20 rounded-full border-4 border-card object-cover shadow-md"
-                  />
-                  <h3 className="mt-3 font-display text-xl font-semibold text-foreground">
-                    Elena Martínez Rojas
-                  </h3>
-                  <p className="text-sm text-muted-foreground">1947 — 2024 · Popayán</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-gold">
-                    Ver memorial completo <ArrowRight className="size-4" />
-                  </span>
-                </div>
-              </Card>
-            </Link>
-          </Reveal>
-        </div>
-      </section>
 
       {/* Pricing */}
       <section className="mx-auto max-w-6xl px-5 py-24">
