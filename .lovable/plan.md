@@ -1,36 +1,17 @@
-# Música de fondo para la demo
+# Aplicar el nuevo logo en toda la web
 
-Añadir una pista musical suave y emotiva a `/memorial/demo`, con un control flotante minimalista de play/pausa. La música **no** se reproduce sola: arranca solo cuando el visitante pulsa el botón (esto también cumple las reglas de los navegadores, que bloquean el audio automático).
+El `Navbar` ya usa el componente `<Logo />` con la nueva imagen, así que aparece en todas las páginas (inicio, para funerarias, crear memorial, contacto, memorial demo). Faltan dos lugares donde todavía se usa la marca antigua en formato texto.
 
-## Qué se va a hacer
+## Cambios
 
-1. **Generar la pista musical**
-   - Crear una composición instrumental original con ElevenLabs Music: piano y cuerdas cálidas, tempo lento-medio, tono sereno y luminoso — emotivo pero no triste, delicado pero no festivo. Aprox. 60–90 s, pensada para repetirse en bucle sin cortes bruscos.
-   - Guardar el audio como asset del proyecto (`src/assets/memorial-ambience.mp3.asset.json`) servido desde el CDN.
-   - Requiere que ElevenLabs esté conectado al proyecto; si no lo está, se conecta antes de generar.
+1. **Footer (`src/components/Footer.tsx`)**  
+   Reemplazar el wordmark de texto (`"Terecuerdo" + "QR"`) por la imagen del logo (`src/assets/logo.png.asset.json`). Como el footer tiene fondo oscuro (`bg-primary`) y el logo es de trazo oscuro sobre transparente, se renderiza dentro de una pequeña "chip" con fondo claro (`bg-background/95`, esquinas redondeadas, padding) para asegurar legibilidad. Altura ~`h-10`.
 
-2. **Control de reproducción (botón flotante "solo play/pausa")**
-   - Botón circular fijo en la esquina inferior derecha, discreto y acorde a la estética cálida (tono `gold`, sombra suave, ícono de nota/volumen).
-   - Estado inicial: pausado. Al pulsar, suena la música en bucle; al pulsar de nuevo, se pausa.
-   - El ícono cambia entre play y pausa. Volumen fijado en un nivel suave de fondo (~35%).
-   - Accesible: `aria-label` y `aria-pressed`.
-
-3. **Integración en la página**
-   - El control vive solo en la ruta de demo (`src/routes/memorial.demo.tsx`), no en el resto del sitio.
-   - El audio se monta sin reproducirse hasta la interacción, sin afectar el rendimiento de carga.
-
-## Detalles técnicos
-
-```text
-src/assets/memorial-ambience.mp3.asset.json   (nuevo, pista generada vía CDN)
-src/components/AmbientAudioToggle.tsx          (nuevo, botón + <audio loop>)
-src/routes/memorial.demo.tsx                   (montar <AmbientAudioToggle />)
-```
-
-- `AmbientAudioToggle` usa un `<audio loop preload="none">` con `useRef`, y un estado `playing` que alterna `play()`/`pause()`.
-- Sin autoplay → sin warnings de navegador ni sorpresas para el visitante.
-- La música es un instrumental original generado, sin problemas de derechos.
+2. **Favicon (`src/routes/__root.tsx`)**  
+   Añadir en el `head()` un `<link rel="icon" type="image/png" href={logoAsset.url}>` y `apple-touch-icon` apuntando al mismo asset para que la pestaña del navegador y el ícono en móviles también usen el nuevo logo.
 
 ## Notas
-- El estilo del botón reutiliza los tokens existentes (`gold`, `background`, sombras) para mantener la coherencia con el rediseño emocional ya aplicado.
-- Si prefieres más adelante varias pistas seleccionables (para las plantillas que mencionaste), esto deja la base lista para ampliarlo.
+
+- No se toca el navbar ni las landings porque ya consumen `<Logo />`.
+- No se modifica el asset ni ningún texto/copy de la web.
+- Si prefieres el logo del footer sin la chip clara (mostrado directamente sobre el fondo oscuro, aceptando que se vea tenue), avísame y lo dejo suelto.
