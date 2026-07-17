@@ -79,37 +79,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TerecuerdoQR — Su historia, siempre viva." },
+      { title: "TerecuerdoQR — Memoriales digitales con placa QR" },
       {
         name: "description",
         content:
-          "Memoriales digitales premium conectados a una placa QR. Honra y preserva la historia de quien amas, para siempre.",
+          "Crea un homenaje digital premium para quien amas, accesible desde una placa QR en su lugar de descanso. Privado, permanente y lleno de su historia.",
       },
       { name: "author", content: "TerecuerdoQR" },
-      { property: "og:title", content: "TerecuerdoQR — Su historia, siempre viva." },
+      { property: "og:title", content: "TerecuerdoQR — Memoriales digitales con placa QR" },
       {
         property: "og:description",
         content:
-          "Memoriales digitales premium conectados a una placa QR. Honra y preserva la historia de quien amas, para siempre.",
+          "Crea un homenaje digital premium para quien amas, accesible desde una placa QR en su lugar de descanso. Privado, permanente y lleno de su historia.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@TerecuerdoQR" },
-      { name: "twitter:title", content: "TerecuerdoQR — Su historia, siempre viva." },
+      { name: "twitter:title", content: "TerecuerdoQR — Memoriales digitales con placa QR" },
       {
         name: "twitter:description",
         content:
-          "Memoriales digitales premium conectados a una placa QR. Honra y preserva la historia de quien amas, para siempre.",
+          "Crea un homenaje digital premium para quien amas, accesible desde una placa QR en su lugar de descanso. Privado, permanente y lleno de su historia.",
       },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/FkKoHn8homWgCJol3vENLGJaG6I3/social-images/social-1782416881989-Captura_de_pantalla_2026-06-25_154651.webp" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", type: "image/png", href: logoAsset.url },
       { rel: "apple-touch-icon", href: logoAsset.url },
     ],
   }),

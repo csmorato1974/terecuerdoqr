@@ -40,11 +40,11 @@ export const Route = createFileRoute("/")({
         content:
           "Crea un homenaje digital premium para quien amas, accesible desde una placa QR en su lugar de descanso. Privado, permanente y lleno de su historia.",
       },
-      { property: "og:title", content: "TerecuerdoQR — Su historia, siempre viva." },
+      { property: "og:title", content: "TerecuerdoQR — Memoriales digitales con placa QR" },
       {
         property: "og:description",
         content:
-          "Memoriales digitales premium conectados a una placa QR. Privacidad, permanencia y acompañamiento humano.",
+          "Crea un homenaje digital premium para quien amas, accesible desde una placa QR en su lugar de descanso. Privado, permanente y lleno de su historia.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: canonicalUrl("/") },
