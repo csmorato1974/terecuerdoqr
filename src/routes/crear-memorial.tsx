@@ -223,7 +223,7 @@ function CrearMemorial() {
                   id="city"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  placeholder="Ej. Popayán, Colombia"
+                  placeholder="Ej. Tacna, Perú"
                   className="mt-1.5"
                 />
               </div>
