@@ -1,14 +1,20 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import logoAsset from "@/assets/logo.png.asset.json";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="flex items-baseline gap-0.5">
-            <span className="font-display text-2xl font-semibold">Terecuerdo</span>
-            <span className="font-display text-2xl font-semibold text-gold">QR</span>
+          <div className="inline-flex items-center rounded-lg bg-background/95 px-3 py-2">
+            <img
+              src={logoAsset.url}
+              alt="TerecuerdoQR"
+              className="h-10 w-auto"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <p className="mt-3 max-w-xs text-sm text-primary-foreground/70">
             Su historia, siempre viva.
