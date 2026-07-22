@@ -1,17 +1,19 @@
-# Aplicar el nuevo logo en toda la web
+# Reemplazar el logo en toda la web
 
-El `Navbar` ya usa el componente `<Logo />` con la nueva imagen, así que aparece en todas las páginas (inicio, para funerarias, crear memorial, contacto, memorial demo). Faltan dos lugares donde todavía se usa la marca antigua en formato texto.
+Subo el nuevo logo (`LOGO_SIN_FONDO-2.png`) como asset CDN y lo uso como fuente única para todos los sitios donde aparece la marca.
 
 ## Cambios
 
-1. **Footer (`src/components/Footer.tsx`)**  
-   Reemplazar el wordmark de texto (`"Terecuerdo" + "QR"`) por la imagen del logo (`src/assets/logo.png.asset.json`). Como el footer tiene fondo oscuro (`bg-primary`) y el logo es de trazo oscuro sobre transparente, se renderiza dentro de una pequeña "chip" con fondo claro (`bg-background/95`, esquinas redondeadas, padding) para asegurar legibilidad. Altura ~`h-10`.
+1. **Nuevo asset**: subir el archivo con `lovable-assets` y generar `src/assets/logo.png.asset.json` (sobrescribiendo el pointer actual, mismo path, así todos los imports existentes toman el nuevo logo automáticamente).
 
-2. **Favicon (`src/routes/__root.tsx`)**  
-   Añadir en el `head()` un `<link rel="icon" type="image/png" href={logoAsset.url}>` y `apple-touch-icon` apuntando al mismo asset para que la pestaña del navegador y el ícono en móviles también usen el nuevo logo.
+2. **Navbar** (`src/components/Logo.tsx`): ya consume `logo.png.asset.json` → queda actualizado sin tocar código. Presente en todas las páginas vía `Navbar`.
+
+3. **Footer** (`src/components/Footer.tsx`): ya usa el mismo asset dentro de una "chip" clara (`bg-background/95`) para que el logo oscuro/dorado sea visible sobre el fondo navy. Se mantiene esa chip para asegurar visibilidad del nuevo logo (que también es navy + dorado sobre transparente).
+
+4. **Favicon y apple-touch-icon** (`src/routes/__root.tsx`): ya apuntan al mismo asset → se actualizan solos.
 
 ## Notas
 
-- No se toca el navbar ni las landings porque ya consumen `<Logo />`.
-- No se modifica el asset ni ningún texto/copy de la web.
-- Si prefieres el logo del footer sin la chip clara (mostrado directamente sobre el fondo oscuro, aceptando que se vea tenue), avísame y lo dejo suelto.
+- Como el logo es horizontal (wordmark ancho), mantengo las alturas actuales (`h-8`/`h-9` navbar, `h-10` footer) y `w-auto` para que escale bien en móvil y desktop sin deformarse.
+- No se toca ningún texto ni copy.
+- El asset viejo se reemplaza en el mismo pointer, por lo que no queda logo antiguo colgado en ninguna sección.
