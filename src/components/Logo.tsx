@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
       <img
         src={logoAsset.url}
         alt="TerecuerdoQR"
-        className="h-8 w-auto sm:h-9"
+        className="h-16 w-auto sm:h-20"
         loading="eager"
         decoding="async"
       />

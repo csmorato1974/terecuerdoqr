@@ -7,11 +7,11 @@ export function Footer() {
     <footer className="border-t border-border bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="inline-flex items-center rounded-lg bg-background/95 px-3 py-2">
+          <div className="inline-flex items-center rounded-lg bg-background/95 px-4 py-3">
             <img
               src={logoAsset.url}
               alt="TerecuerdoQR"
-              className="h-10 w-auto"
+              className="h-20 w-auto"
               loading="lazy"
               decoding="async"
             />
