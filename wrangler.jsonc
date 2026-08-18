@@ -1,0 +1,30 @@
+{
+  // Cloudflare Workers config for TeReQRdo.
+  // Paths match the real Nitro/TanStack Start build output:
+  //   server entry -> dist/server/index.mjs
+  //   static assets -> dist/client
+  // Run `bun run build` before `cf:dev` / `cf:deploy`.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tereqrdo",
+  "compatibility_date": "2026-08-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./dist/server/index.mjs",
+  // Nitro already bundles the worker; let Wrangler ship it as-is.
+  "no_bundle": true,
+  "rules": [{ "type": "ESModule", "globs": ["**/*.mjs", "**/*.js"] }],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist/client",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  // Media storage for memorial photos/videos. The bucket must exist before deploy:
+  //   npx wrangler r2 bucket create tereqrdo-media
+  "r2_buckets": [
+    {
+      "binding": "MEMORIAL_MEDIA",
+      "bucket_name": "tereqrdo-media",
+    },
+  ],
+}
